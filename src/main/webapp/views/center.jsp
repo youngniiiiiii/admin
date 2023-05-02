@@ -63,10 +63,8 @@
                     }
                 }]
             });
-
         }
     }
-
     $(function () {
         chartarea.init();
     })
