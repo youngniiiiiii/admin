@@ -69,12 +69,12 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/logout")
-    public String logout(Model model, HttpSession session) {
+    @RequestMapping("/logoutimpl")
+    public String logoutimpl(Model model, HttpSession session) {
         if (session != null) {
             session.invalidate();
         }
-        return "index";
+        return "redirect:/";
     }
 
     @RequestMapping("/register")
@@ -98,7 +98,8 @@ public class MainController {
 
         model.addAttribute("radm", adm);
         model.addAttribute("center", "registerok");
-        return "index";
+//        다시 메인페이지로 이동한다
+        return "redirect:/";
     }
 }
 
