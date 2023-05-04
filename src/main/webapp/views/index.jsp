@@ -114,6 +114,20 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#marker_mgt"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Marker</span>
+            </a>
+            <div id="marker_mgt" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Marker Managements:</h6>
+                    <a class="collapse-item" href="/marker/add">ADD</a>
+                    <a class="collapse-item" href="/marker/all">ALL</a>
+                </div>
+            </div>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
 

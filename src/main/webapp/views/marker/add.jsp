@@ -2,23 +2,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script>
-    let item_add = {
+    let marker_add = {
         init: function () {
             $('#register_btn').click(function () {
-                item_add.send();
+                marker_add.send();
             });
         },
         send: function () {
             $('#register_form').attr({
                 method: 'post',
-                action: '/item/addimpl',
+                action: '/marker/addimpl',
                 enctype: 'multipart/form-data'
             });
             $('#register_form').submit();
         }
     };
     $(function () {
-        item_add.init();
+        marker_add.init();
     });
 </script>
 <style>
@@ -30,36 +30,53 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">ITEM</h1>
+    <h1 class="h3 mb-2 text-gray-800">MARKER</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">ITEM ADD</h6>
+            <h6 class="m-0 font-weight-bold text-primary">MARKER ADD</h6>
         </div>
         <div class="card-body">
             <div id="container"></div>
             <form id="register_form" class="form-horizontal text-left well">
 
                 <div class="form-group">
-                    <label for="name">Name:</label><br/>
+                    <label for="title">Title:</label><br/>
                     <div class="col-sm-8">
-                        <input type="text" id="name" name="name" placeholder="Your Name..">
+                        <input type="text" id="title" name="title" placeholder="맛집 이름..">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="price">Price:</label><br/>
+                    <label for="title">Target:</label><br/>
                     <div class="col-sm-8">
-                        <input type="number" id="price" name="price" placeholder="Enter price..">
+                        <input type="text" id="target" name="target" placeholder="맛집 홈페이지 주소..">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="img">Image:</label><br/>
+                    <label for="lat">Lat:</label><br/>
                     <div class="col-sm-8">
-                        <input type="file" id="img" name="img" placeholder="Input image..">
-                        <%--                                                name="img"는 dto에서 private MultipartFile img; 파일 형식과 동일해야한다--%>
+                        <input type="text" id="lat" name="lat" placeholder="맛집 위치1">
+                    </div>
+                    <label for="lng">Lng:</label><br/>
+                    <div class="col-sm-8">
+                        <input type="text" id="lng" name="lng" placeholder="맛집 위치2">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="imgfile">Image:</label><br/>
+                    <div class="col-sm-8">
+                        <input type="file" id="imgfile" name="imgfile" placeholder="Input image..">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loc">Loc:</label><br/>
+                    <div class="col-sm-8">
+                        <input type="text" id="loc" name="loc" placeholder="맛집 그룹..">
                     </div>
                 </div>
 

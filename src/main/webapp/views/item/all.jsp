@@ -9,6 +9,11 @@
         width: 80px;
         height: 80px;
     }
+
+    .detail_img {
+        width: 400px;
+        height: 300px;
+    }
 </style>
 <div class="container-fluid">
 
@@ -66,7 +71,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <p>${obj.name}</p>
-                                        <img src="/uimg/${obj.imgname}">
+                                        <img src="/uimg/${obj.imgname}" class="detail_img">
                                     </div>
                                     <div class="modal-footer">
                                         <a href="/item/detail?id=${obj.id}" class="btn btn-primary"
