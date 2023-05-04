@@ -2,7 +2,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script>
-
+    let item_search = {
+        init: function () {
+            $('#search_btn').click(function () {
+                $('#search_form').attr({
+                    method: 'get',
+                    action: '/item/search'
+                });
+                $('#search_form').submit();
+            });
+        }
+    };
+    $(function () {
+        item_search.init();
+    })
 </script>
 <style>
     .medium_img {
@@ -24,6 +37,21 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">ITEM ALL</h6>
+            <form id="search_form" class="form-inline well" style="margin-top: 15px">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="name">Name:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name.."
+                               value="${ms.title}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4" style="margin-left: 70px">
+                        <button id="search_btn" type="button" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">

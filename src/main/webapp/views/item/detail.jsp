@@ -10,7 +10,7 @@
             $('#delete_btn').click(function () {
                 var c = confirm("삭제 하시겠습니까?");
                 if (c == true) {
-                    location.href = "/item/deleteimpl?id=${marker.id}";
+                    location.href = "/item/deleteimpl?id=${gitem.id}";
                 }
             });
         },
@@ -41,16 +41,16 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">${marker.id}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">${gitem.id}</h6>
         </div>
         <div class="card-body">
             <div id="container">
                 <form id="detail_form" class="form-horizontal text-left well">
-                    <input type="hidden" name="id" value="${marker.id}">
-                    <input type="hidden" name="imgname" value="${marker.img}">
+                    <input type="hidden" name="id" value="${gitem.id}">
+                    <input type="hidden" name="imgname" value="${gitem.imgname}">
 
                     <div class="form-group">
-                        <img src="/uimg/${marker.img}">
+                        <img src="/uimg/${gitem.imgname}">
                         <div class="col-sm-8">
                         </div>
                         <div class="col-sm-10">
@@ -61,14 +61,14 @@
                     <div class="form-group">
                         <label for="name">Name:</label><br/>
                         <div class="col-sm-8">
-                            <input type="text" id="name" name="name" value="${marker.title}">
+                            <input type="text" id="name" name="name" value="${gitem.name}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="price">Price:</label><br/>
                         <div class="col-sm-8">
-                            <input type="number" id="price" name="price" value="${marker.price}">
+                            <input type="number" id="price" name="price" value="${gitem.price}">
                         </div>
                     </div>
 
