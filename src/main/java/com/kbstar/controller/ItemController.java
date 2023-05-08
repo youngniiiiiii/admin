@@ -45,7 +45,7 @@ public class ItemController {
     public String all(Model model) throws Exception {
         List<Item> list = null;
         list = itemService.get();
-        model.addAttribute("ilist", list);
+        model.addAttribute("clist", list);
         model.addAttribute("center", dir + "all");
         return "index";
     }
@@ -90,11 +90,16 @@ public class ItemController {
     }
 
     @RequestMapping("/search")
-    public String search(Model model, ItemSearch is) throws Exception {
+    public String search(Model model, ItemSearch ms) throws Exception {
+//        log.info("--------------------------------------------------");
+//        log.info(ms.getStartdate());
+//        log.info(ms.getEnddate());
+//        log.info("--------------------------------------------------");
+        List<Item> list = null;
+        list = itemService.search(ms);
 
-        List<Item> list = itemService.search(is);
-        model.addAttribute("ilist", list);
-        model.addAttribute("is", is);
+        model.addAttribute("ms", ms);
+        model.addAttribute("clist", list);
         model.addAttribute("center", dir + "all");
         return "index";
     }

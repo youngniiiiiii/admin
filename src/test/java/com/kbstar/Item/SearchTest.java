@@ -15,9 +15,9 @@ class SearchTest {
 
     @Test
     void contextLoads() {
-        ItemSearch is = new ItemSearch("섬촐");
+        ItemSearch ms = new ItemSearch("반", 20000, "2023/04/01", "2023/05/20");
         try {
-            service.search(is);
+            service.search(ms);
         } catch (Exception e) {
             log.info("error...");
             e.printStackTrace();

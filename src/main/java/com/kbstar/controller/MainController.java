@@ -101,5 +101,11 @@ public class MainController {
 //        다시 메인페이지로 이동한다
         return "redirect:/";
     }
+
+    @RequestMapping("/websocket")
+    public String websocket(Model model) {
+        model.addAttribute("center", "websocket");
+        return "index";
+    }
 }
 

@@ -16,7 +16,7 @@ class InsertTest {
 
     @Test
     void contextLoads() {
-        Cart obj = new Cart("id10", 102, 5);
+        Cart obj = new Cart("id01", 100, 5);
         try {
             service.register(obj);
             log.info("등록 정상");

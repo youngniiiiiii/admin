@@ -44,6 +44,12 @@
     <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
     <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
 
+    <%--    kakao maps Library--%>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22a2d041a33382346fd95ac20296e110"></script>
+    <%--    websocket Library--%>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -55,7 +61,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -67,7 +73,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -177,7 +183,13 @@
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Live Chart</span></a>
         </li>
-
+        <c:if test="${loginadm != null}">
+            <li class="nav-item">
+                <a class="nav-link" href="/websocket">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Websocket</span></a>
+            </li>
+        </c:if>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

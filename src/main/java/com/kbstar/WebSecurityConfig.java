@@ -18,6 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encodePWD() {
         return new BCryptPasswordEncoder();
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -25,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.addAllowedMethod(CorsConfiguration.ALL);
         configuration.addAllowedHeader(CorsConfiguration.ALL);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/**, /ws, /chbot", configuration);
 
         http.httpBasic()
                 .and().authorizeRequests()
