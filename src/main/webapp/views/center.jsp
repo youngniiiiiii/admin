@@ -35,8 +35,111 @@
         }
     };
 
+    let center_chart1 = {
+        init: function () {
+            $.ajax({
+                url: '/chart1',
+                success: function (data) {
+                    center_chart1.display(data);
+                }
+            });
+
+        },
+        display: function (data) {
+            Highcharts.chart('container1', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Monthly Sum for Sales'
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Korea Won(₩)'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: data
+            });
+        }
+    }
+    let center_chart2 = {
+        init: function () {
+            $.ajax({
+                url: '/chart1',
+                success: function (data) {
+                    center_chart2.display(data);
+                }
+            });
+        },
+        display: function (data) {
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Monthly Sum for Sales'
+                },
+
+                xAxis: {
+                    categories: [
+                        'Jan',
+                        'Feb',
+                        'Mar',
+                        'Apr',
+                        'May',
+                        'Jun',
+                        'Jul',
+                        'Aug',
+                        'Sep',
+                        'Oct',
+                        'Nov',
+                        'Dec'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Rainfall (mm)'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: data
+            });
+        }
+    }
+
     $(function () {
         websocket_center.init();
+        center_chart1.init();
+        center_chart2.init();
+
+        setInterval(center_chart1.init, 5000);
+        setInterval(center_chart2.init, 15000);
     });
 </script>
 
@@ -194,9 +297,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area" id="chartarea">
-
-                    </div>
+                    <div class="chart-area" id="container1"></div>
                 </div>
             </div>
         </div>
@@ -225,19 +326,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
+                    <div class="chart-area" id="container2">
+
                     </div>
                 </div>
             </div>
@@ -398,73 +488,3 @@
     </div>
 
 </div>
-
-<script>
-    let chartarea = {
-        init: function () {
-            this.getdata();
-        },
-        getdata: function () {
-            $.ajax({
-                url: '/chartarea',
-                success: function (result) {
-                    chartarea.display(result);
-                }
-            })
-        },
-        display: function (result) {
-            Highcharts.chart('chartarea', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: null
-                },
-                subtitle: {
-                    text: 'Source: <a href="https://worldpopulationreview.com/world-cities" target="_blank">World Population Review</a>'
-                },
-                xAxis: {
-                    type: 'category',
-                    labels: {
-                        rotation: -45,
-                        style: {
-                            fontSize: '13px',
-                            fontFamily: 'Verdana, sans-serif'
-                        }
-                    }
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Population (millions)'
-                    }
-                },
-                legend: {
-                    enabled: false
-                },
-                tooltip: {
-                    pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
-                },
-                series: [{
-                    name: 'Population',
-                    data: result,
-                    dataLabels: {
-                        enabled: true,
-                        rotation: -90,
-                        color: '#FFFFFF',
-                        align: 'right',
-                        format: '{point.y:.1f}', // one decimal
-                        y: 10, // 10 pixels down from the top
-                        style: {
-                            fontSize: '13px',
-                            fontFamily: 'Verdana, sans-serif'
-                        }
-                    }
-                }]
-            });
-        }
-    }
-    $(function () {
-        chartarea.init();
-    })
-</script>
