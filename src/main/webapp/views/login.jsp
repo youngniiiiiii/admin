@@ -16,7 +16,7 @@
             $('#login_form').submit();
         }
     };
-    
+
     $(function () {
         login_form.init();
     });
@@ -41,6 +41,7 @@
         <div class="card-body">
             <div id="container"></div>
             <form id="login_form" class="form-horizontal text-left well">
+                <input type="hidden" name="redirectURL" value="${redirectURL}">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="id">ID:</label>
                     <div class="col-sm-8">
